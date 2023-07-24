@@ -21,18 +21,22 @@ class DocumentPDF extends Controller
             Storage::disk('public')->makeDirectory($directorio);
         }
 
-
         // Ruta del PDF existente que deseas editar
         $existingPdfPath = storage_path('app/public/pdfblog/anti.pdf');
 
         // Ruta para guardar el nuevo PDF editado
         $editedPdfPath = storage_path('app/public/pdfblog/pdf_editado.pdf');
 
+        // Ruta de la imagen que deseas agregar
+        //$imagePath = public_path('images/7142336_firm.png');
+        $imagePath = storage_path('app/public/images/7142336_firm.png');
+
 
         // Instanciar FPDI y TCPDF
         $pdf = new Fpdi();
         /*  $pdf->setPrintHeader(false);
         $pdf->setPrintFooter(false); */
+
 
         // Agregar una página en blanco
         $pdf->AddPage();
@@ -46,10 +50,14 @@ class DocumentPDF extends Controller
         // Aquí puedes agregar contenido adicional, cambiar texto, etc.
 
         // Agregar nuevos datos al PDF
-        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->SetFont('Arial', '', 11);
         $pdf->SetTextColor(0, 0, 0);
         $pdf->SetXY(100, 325);
-        $pdf->Cell(0, 10, 'fecha ingreso: 2023-06-14 14:13:30', 0, 1, 'C');
+        $pdf->Cell(0, 10, 'fecha ingreso: 2023-06-14 14:13:35', 0, 1, 'C');
+
+
+        // Agregar imagen al PDF
+        $pdf->Image($imagePath, 20, 310, 35, 35, 'PNG');
 
         // Generar el nuevo PDF editado
         $pdf->Output($editedPdfPath, 'F');
@@ -86,6 +94,5 @@ class DocumentPDF extends Controller
         PDFTC::Output(public_path($fileName), 'F');
 
         return response()->download(public_path($fileName));
-
     }
 }
