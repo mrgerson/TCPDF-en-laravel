@@ -19,4 +19,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('document', [DocumentPDF::class, 'documentPdf'])->name('pdf');
+Route::get('d', [DocumentPDF::class, 'documentPdf'])->name('pdf');
