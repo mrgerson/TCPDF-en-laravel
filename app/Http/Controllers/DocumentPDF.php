@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use PDFTC;
+/* use TCPDF; */
 /* use Elibyy\TCPDF\Facades\TCPDF; */
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Fpdf;
 use setasign\Fpdi\Fpdi;
 
 class DocumentPDF extends Controller
@@ -76,7 +75,7 @@ class DocumentPDF extends Controller
 
     public function TCPDFdocument()
     {
-
+         /*
         $fileName = 'demo.pdf';
 
         $data = [
@@ -85,14 +84,14 @@ class DocumentPDF extends Controller
 
         $html = view()->make('pdfExample', $data)->render();
 
-        $pdf = new PDFTC;
+        $pdf = new TCPDF;
 
-        PDFTC::SetTitle('Hello World');
+        TCPDF::SetTitle('Hello World');
 
-        PDFTC::AddPage();
-        PDFTC::WriteHTML($html, true, false, true, false);
-        PDFTC::Output(public_path($fileName), 'F');
+        TCPDF::AddPage();
+        TCPDF::WriteHTML($html, true, false, true, false);
+        TCPDF::Output(public_path($fileName), 'F');
 
-        return response()->download(public_path($fileName));
+        return response()->download(public_path($fileName)); */
     }
 }
